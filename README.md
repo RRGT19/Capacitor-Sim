@@ -13,25 +13,40 @@ npx cap sync
 
 <docgen-index>
 
-* [`echo(...)`](#echo)
+* [`getInfo()`](#getinfo)
+* [Interfaces](#interfaces)
 
 </docgen-index>
 
 <docgen-api>
 <!--Update the source file JSDoc comments and rerun docgen to update the docs below-->
 
-### echo(...)
+### getInfo()
 
 ```typescript
-echo(options: { value: string; }) => Promise<{ value: string; }>
+getInfo() => Promise<SimInfo>
 ```
 
-| Param         | Type                            |
-| ------------- | ------------------------------- |
-| **`options`** | <code>{ value: string; }</code> |
+Return information about the telephony services on the device.
 
-**Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
+**Returns:** <code>Promise&lt;<a href="#siminfo">SimInfo</a>&gt;</code>
+
+**Since:** 1.0.0
 
 --------------------
+
+
+### Interfaces
+
+
+#### SimInfo
+
+| Prop                | Type                |
+| ------------------- | ------------------- |
+| **`carrierId`**     | <code>number</code> |
+| **`carrierIdName`** | <code>string</code> |
+| **`countryIso`**    | <code>string</code> |
+| **`operator`**      | <code>string</code> |
+| **`operatorName`**  | <code>string</code> |
 
 </docgen-api>

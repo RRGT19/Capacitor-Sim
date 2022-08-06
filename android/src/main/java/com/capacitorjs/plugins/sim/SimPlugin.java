@@ -9,14 +9,23 @@ import com.getcapacitor.annotation.CapacitorPlugin;
 @CapacitorPlugin(name = "Sim")
 public class SimPlugin extends Plugin {
 
-    private Sim implementation = new Sim();
+    private Sim implementation;
+
+    @Override
+    public void load() {
+        implementation = new Sim(getContext());
+    }
 
     @PluginMethod
-    public void echo(PluginCall call) {
-        String value = call.getString("value");
+    public void getInfo(PluginCall call) {
+        JSObject res = new JSObject();
 
-        JSObject ret = new JSObject();
-        ret.put("value", implementation.echo(value));
-        call.resolve(ret);
+        res.put("carrierId", implementation.getSimCarrierId());
+        res.put("carrierIdName", implementation.getSimCarrierIdName());
+        res.put("countryIso", implementation.getSimCountryIso());
+        res.put("operator", implementation.getSimOperator());
+        res.put("operatorName", implementation.getSimOperatorName());
+
+        call.resolve(res);
     }
 }
