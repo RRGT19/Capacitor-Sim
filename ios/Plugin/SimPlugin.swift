@@ -8,18 +8,20 @@ import Capacitor
 @objc(SimPlugin)
 public class SimPlugin: CAPPlugin {
 
-    private let implementation: Sim = {
-        return Sim()
-    }()
+    private var implementation: Sim?
+
+    public override func load() {
+        self.implementation = Sim()
+    }
 
 
     @objc func getInfo(_ call: CAPPluginCall) {
         call.resolve([
-          "carrierId": implementation.getSimCarrierId(),
-          "carrierIdName": implementation.getSimCarrierIdName(),
-          "countryIso": implementation.getSimCountryIso(),
-          "operator": implementation.getSimOperator(),
-          "operatorName": implementation.getSimOperatorName(),
+            "carrierId": implementation?.getSimCarrierId() ?? -1,
+            "carrierIdName": implementation?.getSimCarrierIdName() ?? "",
+            "countryIso": implementation?.getSimCountryIso() ?? "",
+            "operator": implementation?.getSimOperator() ?? "",
+            "operatorName": implementation?.getSimOperatorName() ?? "",
         ])
     }
 }
