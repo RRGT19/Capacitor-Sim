@@ -14,7 +14,7 @@ class SimTests: XCTestCase {
 
     func testGetSimCarrierId() {
         let implementation = Sim()
-        let value = 1
+        let value = -1
         let result = implementation.getSimCarrierId()
 
         XCTAssertEqual(value, result)
@@ -22,7 +22,7 @@ class SimTests: XCTestCase {
 
     func testGetSimCarrierIdName() {
         let implementation = Sim()
-        let value = "String"
+        let value = ""
         let result = implementation.getSimCarrierIdName()
 
         XCTAssertEqual(value, result)
@@ -30,7 +30,7 @@ class SimTests: XCTestCase {
 
     func testGetSimCountryIso() {
         let implementation = Sim()
-        let value = "String"
+        let value = ""
         let result = implementation.getSimCountryIso()
 
         XCTAssertEqual(value, result)
@@ -38,7 +38,7 @@ class SimTests: XCTestCase {
 
     func testGetSimOperator() {
         let implementation = Sim()
-        let value = "String"
+        let value = ""
         let result = implementation.getSimOperator()
 
         XCTAssertEqual(value, result)
@@ -46,7 +46,7 @@ class SimTests: XCTestCase {
 
     func testGetSimOperatorName() {
         let implementation = Sim()
-        let value = "String"
+        let value = ""
         let result = implementation.getSimOperatorName()
 
         XCTAssertEqual(value, result)

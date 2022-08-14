@@ -3,23 +3,29 @@ import CoreTelephony
 
 @objc public class Sim: NSObject {
 
+    private lazy var networkInfo: CTTelephonyNetworkInfo = {
+        return CTTelephonyNetworkInfo()
+    }()
+
     @objc public func getSimCarrierId() -> Int {
-        return 1
+        return -1
     }
 
     @objc public func getSimCarrierIdName() -> String {
-        return "String"
+        return networkInfo.serviceSubscriberCellularProviders?.first?.value.carrierName ?? ""
     }
 
     @objc public func getSimCountryIso() -> String {
-        return "String"
+        return networkInfo.serviceSubscriberCellularProviders?.first?.value.isoCountryCode ?? ""
     }
 
     @objc public func getSimOperator() -> String {
-        return "String"
+        let mcc = networkInfo.serviceSubscriberCellularProviders?.first?.value.isoCountryCode ?? ""
+        let mnc = networkInfo.serviceSubscriberCellularProviders?.first?.value.mobileCountryCode ?? ""
+        return [mcc,mnc].joined(separator: "")
     }
 
     @objc public func getSimOperatorName() -> String {
-        return "String"
+        return networkInfo.serviceSubscriberCellularProviders?.first?.value.carrierName ?? ""
     }
 }
