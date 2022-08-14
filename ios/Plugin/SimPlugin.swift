@@ -7,12 +7,19 @@ import Capacitor
  */
 @objc(SimPlugin)
 public class SimPlugin: CAPPlugin {
-    private let implementation = Sim()
 
-    @objc func echo(_ call: CAPPluginCall) {
-        let value = call.getString("value") ?? ""
+    private let implementation: Sim = {
+        return Sim()
+    }()
+
+
+    @objc func getInfo(_ call: CAPPluginCall) {
         call.resolve([
-            "value": implementation.echo(value)
+          "carrierId": implementation.getSimCarrierId(),
+          "carrierIdName": implementation.getSimCarrierIdName(),
+          "countryIso": implementation.getSimCountryIso(),
+          "operator": implementation.getSimOperator(),
+          "operatorName": implementation.getSimOperatorName(),
         ])
     }
 }
